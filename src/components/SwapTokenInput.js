@@ -12,17 +12,15 @@ export class SwapTokenInput extends Component {
             <Avatar src={this.props.token} className="SwapTokenInput__icon" />
           </Col>
           <Col>
-            <div className="SwapTokenInput__symbol">
-              {this.props.symbol}
-            </div>
+            <div className="SwapTokenInput__symbol">{this.props.symbol}</div>
           </Col>
           <Col>
             <Caret className="SwapTokenInput__caret" />
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 
-export default SwapTokenInput
+export default SwapTokenInput;

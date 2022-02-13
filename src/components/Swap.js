@@ -11,11 +11,11 @@ import './Swap.css';
 
 export class Swap extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      isSelectTokenModalVisible: false
-    }
+      isSelectTokenModalVisible: false,
+    };
 
     this.openSelectTokenModal = this.openSelectTokenModal.bind(this);
     this.closeSelectTokenModal = this.closeSelectTokenModal.bind(this);
@@ -23,13 +23,13 @@ export class Swap extends Component {
 
   openSelectTokenModal() {
     this.setState({
-      isSelectTokenModalVisible: true
+      isSelectTokenModalVisible: true,
     });
   }
 
   closeSelectTokenModal() {
     this.setState({
-      isSelectTokenModalVisible: false
+      isSelectTokenModalVisible: false,
     });
   }
 
@@ -39,9 +39,7 @@ export class Swap extends Component {
         <Row align="middle" justify="center">
           <Col span={24}>
             <SettingOutlined className="Swap__setting" />
-            <div className="Swap__heading">
-              Swap
-            </div>
+            <div className="Swap__heading">Swap</div>
           </Col>
         </Row>
         <Row align="middle">
@@ -64,7 +62,11 @@ export class Swap extends Component {
             <SwapInput label="Swap to" amount={0} balance="-" />
           </Col>
           <Col span={12}>
-            <Button label="Select a Token" icon onClick={this.openSelectTokenModal} />
+            <Button
+              label="Select a Token"
+              icon
+              onClick={this.openSelectTokenModal}
+            />
             {/* <SwapTokenInput symbol="1INCH" token={avalanche} /> */}
           </Col>
         </Row>
@@ -73,12 +75,19 @@ export class Swap extends Component {
             <Button label="Enter an Amount" type="disabled" icon={false} />
           </Col>
         </Row>
-        <Modal footer={null} visible={this.state.isSelectTokenModalVisible} maskStyle={{ backdropFilter: 'blur(8px)' }} onCancel={this.closeSelectTokenModal} className="SwapSelectTokenModal" bodyStyle={{ boxShadow: 'none', backgroundColor: '#131118' }}>
+        <Modal
+          footer={null}
+          visible={this.state.isSelectTokenModalVisible}
+          maskStyle={{ backdropFilter: 'blur(8px)' }}
+          onCancel={this.closeSelectTokenModal}
+          className="SwapSelectTokenModal"
+          bodyStyle={{ boxShadow: 'none', backgroundColor: '#131118' }}
+        >
           <SwapSelectTokenModal />
         </Modal>
       </div>
-    )
+    );
   }
 }
 
-export default Swap
+export default Swap;

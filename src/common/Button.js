@@ -5,23 +5,29 @@ import './Button.css';
 
 export class Button extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      className: this.props.type ? `Button--${this.props.type}` : 'Button'
-    }
+      className: this.props.type ? `Button--${this.props.type}` : 'Button',
+    };
   }
 
   render() {
     return (
       <button className={this.state.className} onClick={this.props.onClick}>
         <Row align="middle">
-          <Col span={this.props.icon ? 20 : 24}>{this.props.label} {this.state.first}</Col>
-          {this.props.icon && <Col><Caret className="Button__icon" /></Col>}
+          <Col span={this.props.icon ? 20 : 24}>
+            {this.props.label} {this.state.first}
+          </Col>
+          {this.props.icon && (
+            <Col>
+              <Caret className="Button__icon" />
+            </Col>
+          )}
         </Row>
       </button>
-    )
+    );
   }
 }
 
-export default Button
+export default Button;
