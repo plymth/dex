@@ -14,7 +14,7 @@ export class Button extends Component {
 
   render() {
     return (
-      <button className={this.state.className}>
+      <button className={this.state.className} onClick={this.props.onClick}>
         <Row align="middle">
           <Col span={this.props.icon ? 20 : 24}>{this.props.label} {this.state.first}</Col>
           {this.props.icon && <Col><Caret className="Button__icon" /></Col>}

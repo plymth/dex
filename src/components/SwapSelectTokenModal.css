@@ -1,0 +1,8 @@
+.SwapSelectTokenModal {
+    background-color: #131118;
+    color: #ffffff;
+}
+
+.ant-modal-content {
+    box-shadow: none;
+}
