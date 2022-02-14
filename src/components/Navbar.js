@@ -19,6 +19,9 @@ export class Navbar extends Component {
           <li>
             <NavLink to="/vote">Vote</NavLink>
           </li>
+          <li>
+            <NavLink to="/charts">Charts</NavLink>
+          </li>
         </ul>
       </nav>
     );

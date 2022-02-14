@@ -6,31 +6,19 @@ import SwapTokenInput from './SwapTokenInput';
 import SwapSelectTokenModal from './SwapSelectTokenModal';
 import Button from '../common/Button';
 import { ReactComponent as ExchangeBtn } from '../assets/exchange-btn.svg';
-import avalanche from '../assets/avalanche.svg';
+import { ReactComponent as Close } from '../assets/close-small.svg';
+import { connect } from 'react-redux';
+import store from '../store';
+import {
+  openSelectTokenModal,
+  closeSelectTokenModal,
+  exchange
+} from '../features/swap/swapSlice';
 import './Swap.css';
 
 export class Swap extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isSelectTokenModalVisible: false,
-    };
-
-    this.openSelectTokenModal = this.openSelectTokenModal.bind(this);
-    this.closeSelectTokenModal = this.closeSelectTokenModal.bind(this);
-  }
-
-  openSelectTokenModal() {
-    this.setState({
-      isSelectTokenModalVisible: true,
-    });
-  }
-
-  closeSelectTokenModal() {
-    this.setState({
-      isSelectTokenModalVisible: false,
-    });
   }
 
   render() {
@@ -47,13 +35,21 @@ export class Swap extends Component {
             <SwapInput label="Swap from" amount={0} balance={70.42} autoFocus />
           </Col>
           <Col span={12}>
-            <SwapTokenInput symbol="AVAX" token={avalanche} />
+            <SwapTokenInput
+              token={this.props.swapFromToken}
+              onClick={() =>
+                this.props.openSelectTokenModal({ swapFrom: true })
+              }
+            />
           </Col>
         </Row>
         <Row>
           <Col span={24}>
             <Divider style={{ borderColor: '#1c1924' }} orientation="right">
-              <ExchangeBtn className="Swap__exchange-btn" />
+              <ExchangeBtn
+                className="Swap__exchange-btn"
+                onClick={() => this.props.exchange()}
+              />
             </Divider>
           </Col>
         </Row>
@@ -62,12 +58,23 @@ export class Swap extends Component {
             <SwapInput label="Swap to" amount={0} balance="-" />
           </Col>
           <Col span={12}>
-            <Button
-              label="Select a Token"
-              icon
-              onClick={this.openSelectTokenModal}
-            />
-            {/* <SwapTokenInput symbol="1INCH" token={avalanche} /> */}
+            {!this.props.swapToToken && (
+              <Button
+                label="Select a Token"
+                icon
+                onClick={() =>
+                  this.props.openSelectTokenModal({ swapFrom: false })
+                }
+              />
+            )}
+            {this.props.swapToToken && (
+              <SwapTokenInput
+                token={this.props.swapToToken}
+                onClick={() =>
+                  this.props.openSelectTokenModal({ swapFrom: false })
+                }
+              />
+            )}
           </Col>
         </Row>
         <Row style={{ paddingTop: '30px' }}>
@@ -77,11 +84,13 @@ export class Swap extends Component {
         </Row>
         <Modal
           footer={null}
-          visible={this.state.isSelectTokenModalVisible}
+          visible={this.props.isSelectTokenModalVisible}
           maskStyle={{ backdropFilter: 'blur(8px)' }}
-          onCancel={this.closeSelectTokenModal}
+          onCancel={() => this.props.closeSelectTokenModal()}
           className="SwapSelectTokenModal"
           bodyStyle={{ boxShadow: 'none', backgroundColor: '#131118' }}
+          width={464}
+          closeIcon={<Close />}
         >
           <SwapSelectTokenModal />
         </Modal>
@@ -90,4 +99,21 @@ export class Swap extends Component {
   }
 }
 
-export default Swap;
+const mapStateToProps = (state) => {
+  return {
+    isSelectTokenModalVisible: state.swap.isSelectTokenModalVisible,
+    greeting: state.swap.greeting,
+    swapFromToken: state.swap.swapFromToken,
+    swapToToken: state.swap.swapToToken,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    openSelectTokenModal,
+    closeSelectTokenModal,
+    exchange,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(Swap);

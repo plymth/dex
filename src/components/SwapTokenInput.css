@@ -1,7 +1,10 @@
+.SwapTokenInput {
+  cursor: pointer;
+}
+
 .SwapTokenInput__icon {
   width: 40px;
   height: 40px;
-  background-color: #413b54;
   border-radius: 20px;
   margin-right: 8px;
 }

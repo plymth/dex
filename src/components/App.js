@@ -7,6 +7,7 @@ import Swap from './Swap';
 import Pool from './Pool';
 import About from './About';
 import Vote from './Vote';
+import Charts from './Charts';
 
 const { Header, Content } = Layout;
 
@@ -25,6 +26,7 @@ export class App extends Component {
                 <Route path="/pool" element={<Pool />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/vote" element={<Vote />} />
+                <Route path="/charts" element={<Charts />} />
                 <Route path="*" element={<Navigate to="/swap" replace />} />
               </Routes>
             </Col>

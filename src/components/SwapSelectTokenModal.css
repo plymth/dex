@@ -1,8 +1,88 @@
 .SwapSelectTokenModal {
-    background-color: #131118;
-    color: #ffffff;
+  border-radius: 8px !important;
+  background-color: #131118;
+  height: 772px;
+  color: #ffffff;
+}
+
+.SwapSelectTokenModal__close {
+  float: right;
+  cursor: pointer;
+}
+
+.ant-modal-close-x {
+  width: 24px;
+  height: 24px;
+  line-height: 0;
+  margin: 28px 24px 0 0;
+}
+
+.SwapSelectTokenModal__title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .ant-modal-content {
-    box-shadow: none;
+  box-shadow: none;
+  border-radius: 20px !important;
+}
+
+.ant-modal-body {
+  box-shadow: none;
+  border-radius: 8px !important;
+  border: 1px solid #131118;
+}
+
+.SwapSelectTokenModal__input {
+  background-color: #1c1924;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 24px;
+}
+
+.SwapSelectTokenModal__input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #1c1924;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.SwapSelectTokenModal__input input::placeholder {
+  color: #a6a0bb;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.SwapSelectTokenModal__search-icon {
+  float: right;
+}
+
+.SwapSelectTokenModal__content {
+  height: 640px;
+}
+
+.SwapSelectTokenModal__content--full {
+  height: 640px;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.SwapSelectTokenModal__content--full::-webkit-scrollbar {
+  width: 4px;
+}
+
+.SwapSelectTokenModal__content--full::-webkit-scrollbar-track {
+  background-color: #131118;
+}
+
+.SwapSelectTokenModal__content--full::-webkit-scrollbar-thumb {
+  background-color: #7a7099;
+  border-radius: 10px;
 }
