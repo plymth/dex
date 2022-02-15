@@ -16,6 +16,20 @@
   margin-bottom: 4px;
 }
 
+.SwapInput__amount--filled input {
+  background-color: #131118;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.ant-input-number-disabled {
+  background-color: #131118;
+}
+
 .SwapInput__balance {
   font-size: 16px;
   font-weight: 400px;

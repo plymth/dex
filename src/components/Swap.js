@@ -8,11 +8,10 @@ import Button from '../common/Button';
 import { ReactComponent as ExchangeBtn } from '../assets/exchange-btn.svg';
 import { ReactComponent as Close } from '../assets/close-small.svg';
 import { connect } from 'react-redux';
-import store from '../store';
 import {
   openSelectTokenModal,
   closeSelectTokenModal,
-  exchange
+  exchange,
 } from '../features/swap/swapSlice';
 import './Swap.css';
 
@@ -32,15 +31,26 @@ export class Swap extends Component {
         </Row>
         <Row align="middle">
           <Col span={12}>
-            <SwapInput label="Swap from" amount={0} balance={70.42} autoFocus />
+            <SwapInput
+              label="Swap from"
+              token={this.props.swapFromToken}
+              from={true}
+              autoFocus
+            />
           </Col>
           <Col span={12}>
-            <SwapTokenInput
-              token={this.props.swapFromToken}
-              onClick={() =>
-                this.props.openSelectTokenModal({ swapFrom: true })
-              }
-            />
+            {!this.props.swapFromToken && (
+              <Button
+                label="Select a Token"
+                icon
+                onClick={() =>
+                  this.props.openSelectTokenModal({ swapFrom: true })
+                }
+              />
+            )}
+            {this.props.swapFromToken && (
+              <SwapTokenInput token={this.props.swapFromToken} from={true} />
+            )}
           </Col>
         </Row>
         <Row>
@@ -55,7 +65,11 @@ export class Swap extends Component {
         </Row>
         <Row align="middle">
           <Col span={12}>
-            <SwapInput label="Swap to" amount={0} balance="-" />
+            <SwapInput
+              label="Swap to"
+              token={this.props.swapToToken}
+              to={true}
+            />
           </Col>
           <Col span={12}>
             {!this.props.swapToToken && (
@@ -68,12 +82,7 @@ export class Swap extends Component {
               />
             )}
             {this.props.swapToToken && (
-              <SwapTokenInput
-                token={this.props.swapToToken}
-                onClick={() =>
-                  this.props.openSelectTokenModal({ swapFrom: false })
-                }
-              />
+              <SwapTokenInput token={this.props.swapToToken} />
             )}
           </Col>
         </Row>
