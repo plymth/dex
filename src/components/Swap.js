@@ -87,9 +87,16 @@ export class Swap extends Component {
           </Col>
         </Row>
         <Row style={{ paddingTop: '30px' }}>
-          <Col span={24}>
-            <Button label="Enter an Amount" type="disabled" icon={false} />
-          </Col>
+          {(!this.props.swapFromToken || !this.props.swapToToken) && (
+            <Col span={24}>
+              <Button label="Enter an Amount" type="disabled" icon={false} />
+            </Col>
+          )}
+          {this.props.swapFromToken && this.props.swapToToken && (
+            <Col span={24}>
+              <Button label="Swap" type="full" icon={false} />
+            </Col>
+          )}
         </Row>
         <Modal
           footer={null}

@@ -82,8 +82,5 @@ export const {
   exchange,
 } = swapSlice.actions;
 
-//export const selectTokens = state => state.swap.tokens;
-
-// Define a selector for tokens
 
 export default swapSlice.reducer;
