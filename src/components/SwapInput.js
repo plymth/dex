@@ -44,12 +44,12 @@ export class SwapInput extends Component {
     if (this.props.from) {
       return this.props.swapFromToken && this.props.swapFromToken.amount
         ? this.props.swapFromToken.amount
-        : 0;
+        : null;
     }
     if (this.props.to) {
       return this.props.swapToToken && this.props.swapToToken.amount
         ? this.props.swapToToken.amount
-        : 0;
+        : null;
     }
   }
 
@@ -59,17 +59,8 @@ export class SwapInput extends Component {
         <div className="SwapInput__label">{this.props.label}</div>
         <div className={this.getTokenAmountClass()}>
           <InputNumber
-            // defaultValue={
-            //   this.props.swapFromToken && this.props.swapFromToken.amount
-            //     ? this.props.swapFromToken.amount
-            //     : 0
-            // }
-            value={
-              this.getDefaultValue()
-              // this.props.swapFromToken && this.props.swapFromToken.amount
-              //   ? this.props.swapFromToken.amount
-              //   : 0
-            }
+            value={this.getDefaultValue()}
+            placeholder={0}
             bordered={false}
             controls={false}
             style={{ width: '100%' }}
