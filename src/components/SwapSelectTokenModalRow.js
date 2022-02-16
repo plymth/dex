@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import './SwapSelectTokenModalRow.css';
-import { connect } from 'react-redux';
-import store from '../store';
-import { setSwapFromToken, setSwapToToken } from '../features/swap/swapSlice';
 
 export class SwapSelectTokenModalRow extends Component {
   constructor(props) {
     super(props);
+
+    this.setToken = this.setToken.bind(this);
+  }
+
+  setToken() {
+    this.props.setToken(this.props.token);
   }
 
   render() {
@@ -15,11 +18,7 @@ export class SwapSelectTokenModalRow extends Component {
       <Row
         align="middle"
         className="SwapSelectTokenModalRow"
-        onClick={() =>
-          this.props.swapFrom
-            ? this.props.setSwapFromToken(this.props.token)
-            : this.props.setSwapToToken(this.props.token)
-        }
+        onClick={() => this.setToken()}
       >
         <Col span={4}>
           <img
@@ -43,20 +42,4 @@ export class SwapSelectTokenModalRow extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    swapFrom: state.swap.swapFrom,
-  };
-};
-
-const mapDispatchToProps = () => {
-  return {
-    setSwapFromToken,
-    setSwapToToken,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps()
-)(SwapSelectTokenModalRow);
+export default SwapSelectTokenModalRow;

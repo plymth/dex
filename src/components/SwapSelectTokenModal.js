@@ -4,6 +4,9 @@ import { Row, Col } from 'antd';
 import { ReactComponent as Search } from '../assets/search.svg';
 import SwapSelectTokenModalRow from './SwapSelectTokenModalRow';
 import './SwapSelectTokenModal.css';
+import {
+  selectTokens
+} from '../features/swap/swapSlice';
 
 export class SwapSelectTokenModal extends Component {
   constructor(props) {
@@ -34,8 +37,12 @@ export class SwapSelectTokenModal extends Component {
           </Col>
         </Row>
         <div className={this.getContentClass()}>
-          {this.props.tokens.map((token, index) => (
-            <SwapSelectTokenModalRow token={token} key={index} />
+          {this.props.selectTokens.map((token, index) => (
+            <SwapSelectTokenModalRow
+              setToken={this.props.setToken}
+              token={token}
+              key={index}
+            />
           ))}
         </div>
       </div>
@@ -46,6 +53,7 @@ export class SwapSelectTokenModal extends Component {
 const mapStateToProps = (state) => {
   return {
     tokens: state.swap.tokens,
+    selectTokens: selectTokens(state)
   };
 };
 

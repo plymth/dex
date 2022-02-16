@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import avalanche from '../../assets/avalanche.svg';
 import tokens from '../../data/tokens';
+import _ from 'lodash';
 
 export const swapSlice = createSlice({
   name: 'swap',
@@ -9,16 +10,21 @@ export const swapSlice = createSlice({
       name: 'Avalanche',
       symbol: 'AVAX',
       icon: avalanche,
-      amount: 0,
+      amount: null,
     },
     swapToToken: null,
     isSelectTokenModalVisible: false,
-    swapFrom: true,
-    tokens: tokens
+    tokens: tokens,
+    modalCallback: null,
   },
   reducers: {
     setSwapFromToken: (state, action) => {
       state.swapFromToken = action.payload;
+      state.isSelectTokenModalVisible = false;
+    },
+
+    setSwapToToken: (state, action) => {
+      state.swapToToken = action.payload;
       state.isSelectTokenModalVisible = false;
     },
 
@@ -30,13 +36,9 @@ export const swapSlice = createSlice({
       state.swapFromToken = null;
     },
 
-    setSwapToToken: (state, action) => {
-      state.swapToToken = action.payload;
-      state.isSelectTokenModalVisible = false;
-    },
-
     setSwapToTokenAmount: (state, action) => {
       state.swapToToken.amount = action.payload;
+      state.isSelectTokenModalVisible = false;
     },
 
     removeSwapToToken: (state, action) => {
@@ -44,7 +46,6 @@ export const swapSlice = createSlice({
     },
 
     openSelectTokenModal: (state, action) => {
-      state.swapFrom = action.payload.swapFrom;
       state.isSelectTokenModalVisible = true;
     },
 
@@ -82,5 +83,12 @@ export const {
   exchange,
 } = swapSlice.actions;
 
-
 export default swapSlice.reducer;
+
+export const selectTokens = (state) => {
+  return state.swap.tokens.filter(
+    (token) =>
+      token.symbol != _.get(state.swap.swapFromToken, 'symbol') &&
+      token.symbol != _.get(state.swap.swapToToken, 'symbol')
+  );
+};

@@ -12,12 +12,25 @@ import {
   openSelectTokenModal,
   closeSelectTokenModal,
   exchange,
+  setSwapFromToken,
+  setSwapToToken,
+  setSwapFromTokenAmount,
+  setSwapToTokenAmount,
+  removeSwapFromToken,
+  removeSwapToToken,
 } from '../features/swap/swapSlice';
 import './Swap.css';
 
 export class Swap extends Component {
   constructor(props) {
     super(props);
+
+    this.setSelectTokenModalAction = this.setSelectTokenModalAction.bind(this);
+  }
+
+  setSelectTokenModalAction(tokenModalAction) {
+    this.setToken = tokenModalAction;
+    this.props.openSelectTokenModal();
   }
 
   render() {
@@ -34,23 +47,18 @@ export class Swap extends Component {
             <SwapInput
               label="Swap from"
               token={this.props.swapFromToken}
-              from={true}
+              onChange={this.props.setSwapFromTokenAmount}
               autoFocus
             />
           </Col>
           <Col span={12}>
-            {!this.props.swapFromToken && (
-              <Button
-                label="Select a Token"
-                icon
-                onClick={() =>
-                  this.props.openSelectTokenModal({ swapFrom: true })
-                }
-              />
-            )}
-            {this.props.swapFromToken && (
-              <SwapTokenInput token={this.props.swapFromToken} from={true} />
-            )}
+            <SwapTokenInput
+              token={this.props.swapFromToken}
+              removeToken={() => this.props.removeSwapFromToken()}
+              setSelectTokenModalAction={() =>
+                this.setSelectTokenModalAction(this.props.setSwapFromToken)
+              }
+            />
           </Col>
         </Row>
         <Row>
@@ -68,22 +76,18 @@ export class Swap extends Component {
             <SwapInput
               label="Swap to"
               token={this.props.swapToToken}
-              to={true}
+              onChange={this.props.setSwapToTokenAmount}
             />
           </Col>
           <Col span={12}>
-            {!this.props.swapToToken && (
-              <Button
-                label="Select a Token"
-                icon
-                onClick={() =>
-                  this.props.openSelectTokenModal({ swapFrom: false })
-                }
-              />
-            )}
-            {this.props.swapToToken && (
-              <SwapTokenInput token={this.props.swapToToken} />
-            )}
+            <SwapTokenInput
+              token={this.props.swapToToken}
+              removeToken={() => this.props.removeSwapToToken()}
+              setToken={this.props.setSwapToToken}
+              setSelectTokenModalAction={() =>
+                this.setSelectTokenModalAction(this.props.setSwapToToken)
+              }
+            />
           </Col>
         </Row>
         <Row style={{ paddingTop: '30px' }}>
@@ -108,7 +112,7 @@ export class Swap extends Component {
           width={464}
           closeIcon={<Close />}
         >
-          <SwapSelectTokenModal />
+          <SwapSelectTokenModal setToken={this.setToken} />
         </Modal>
       </div>
     );
@@ -118,7 +122,6 @@ export class Swap extends Component {
 const mapStateToProps = (state) => {
   return {
     isSelectTokenModalVisible: state.swap.isSelectTokenModalVisible,
-    greeting: state.swap.greeting,
     swapFromToken: state.swap.swapFromToken,
     swapToToken: state.swap.swapToToken,
   };
@@ -129,6 +132,12 @@ const mapDispatchToProps = () => {
     openSelectTokenModal,
     closeSelectTokenModal,
     exchange,
+    setSwapFromToken,
+    setSwapToToken,
+    setSwapFromTokenAmount,
+    setSwapToTokenAmount,
+    removeSwapFromToken,
+    removeSwapToToken,
   };
 };
 
