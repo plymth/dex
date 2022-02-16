@@ -1,3 +1,4 @@
+import avalanche from '../assets/avalanche.svg';
 import bitcoin from '../assets/bitcoin-btc-logo.png';
 import ethereum from '../assets/ethereum-eth-logo.png';
 import tether from '../assets/tether-usdt-logo.png';
@@ -10,6 +11,12 @@ import flow from '../assets/flow-flow-logo.png';
 import sushiswap from '../assets/sushiswap-sushi-logo.png';
 
 const tokens = [
+  {
+    name: 'Avalanche',
+    symbol: 'AVAX',
+    icon: avalanche,
+    amount: null,
+  },
   {
     name: 'Bitcoin',
     symbol: 'BTC',
