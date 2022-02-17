@@ -12,6 +12,7 @@ export const swapSlice = createSlice({
       icon: avalanche,
       amount: null,
     },
+    searchToken: '',
     swapToToken: null,
     isSelectFromTokenModalVisible: false,
     isSelectToTokenModalVisible: false,
@@ -61,6 +62,10 @@ export const swapSlice = createSlice({
       state.isSelectToTokenModalVisible = false;
     },
 
+    searchTokens: (state, action) => {
+      state.searchToken = action.payload;
+    },
+
     switchTokens: (state, action) => {
       if (!state.swapFromToken) {
         return;
@@ -91,6 +96,7 @@ export const {
   closeSelectFromTokenModal,
   closeSelectToTokenModal,
   switchTokens,
+  searchTokens,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;
@@ -99,12 +105,16 @@ export const selectTokens = (state) => {
   return state.swap.tokens.filter(
     (token) =>
       token.symbol !== _.get(state.swap.swapFromToken, 'symbol') &&
-      token.symbol !== _.get(state.swap.swapToToken, 'symbol')
+      token.symbol !== _.get(state.swap.swapToToken, 'symbol') &&
+      token.name.toLowerCase().includes(state.swap.searchToken.toLowerCase())
   );
 };
 
-export const selectIsSelectFromTokenModalVisible = (state) => state.swap.isSelectFromTokenModalVisible;
-export const selectIsSelectToTokenModalVisible = (state) => state.swap.isSelectToTokenModalVisible;
+export const selectIsSelectFromTokenModalVisible = (state) =>
+  state.swap.isSelectFromTokenModalVisible;
+export const selectIsSelectToTokenModalVisible = (state) =>
+  state.swap.isSelectToTokenModalVisible;
 export const selectSwapFromToken = (state) => state.swap.swapFromToken;
 export const selectSwapToToken = (state) => state.swap.swapToToken;
-export const selectCanSwapToken = (state) => !_.isEmpty(state.swap.swapFromToken) && !_.isEmpty(state.swap.swapToToken)
+export const selectCanSwapToken = (state) =>
+  !_.isEmpty(state.swap.swapFromToken) && !_.isEmpty(state.swap.swapToToken);

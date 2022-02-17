@@ -1,13 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import { ReactComponent as Search } from '../assets/search.svg';
 import { SwapSelectTokenModalRow } from './SwapSelectTokenModalRow';
 import { selectTokens } from '../features/swap/swapSlice';
 import { useSelector } from 'react-redux';
 import './SwapSelectTokenModal.css';
+import { searchTokens } from '../features/swap/swapSlice';
 
 export const SwapSelectTokenModal = (props) => {
   const tokens = useSelector(selectTokens);
+  const dispatch = useDispatch();
 
   const getContentClass = () => {
     return tokens.length > 7
@@ -24,7 +27,11 @@ export const SwapSelectTokenModal = (props) => {
       </Row>
       <Row align="middle" className="SwapSelectTokenModal__input">
         <Col span={20}>
-          <input type="text" placeholder="Search name or paste address" />
+          <input
+            type="text"
+            placeholder="Search name or paste address"
+            onChange={(e) => dispatch(searchTokens(e.target.value))}
+          />
         </Col>
         <Col span={4}>
           <Search className="SwapSelectTokenModal__search-icon" />
