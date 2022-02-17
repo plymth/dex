@@ -121,5 +121,6 @@ export const selectIsSelectToTokenModalVisible = (state) =>
 export const selectSwapFromToken = (state) => state.swap.swapFromToken;
 export const selectSwapToToken = (state) => state.swap.swapToToken;
 export const selectCanSwapToken = (state) =>
-  !_.isEmpty(state.swap.swapFromToken) && !_.isEmpty(state.swap.swapToToken);
+  _.get(state.swap.swapFromToken, 'amount') &&
+  _.get(state.swap.swapToToken, 'amount');
 export const selectSearchToken = (state) => state.swap.selectSearchToken;
