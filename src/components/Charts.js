@@ -1,12 +1,5 @@
-import React, { Component } from 'react';
-import './Charts.css';
+import React from 'react';
 
-export class Charts extends Component {
-  render() {
-    return (
-      <div className="Charts">Charts</div>
-    )
-  }
-}
-
-export default Charts
+export const Charts = () => {
+  return <div className="Charts">Charts</div>;
+};

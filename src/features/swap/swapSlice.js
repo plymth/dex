@@ -13,19 +13,20 @@ export const swapSlice = createSlice({
       amount: null,
     },
     swapToToken: null,
-    isSelectTokenModalVisible: false,
+    isSelectFromTokenModalVisible: false,
+    isSelectToTokenModalVisible: false,
     tokens: tokens,
     modalCallback: null,
   },
   reducers: {
     setSwapFromToken: (state, action) => {
       state.swapFromToken = action.payload;
-      state.isSelectTokenModalVisible = false;
+      state.isSelectFromTokenModalVisible = false;
     },
 
     setSwapToToken: (state, action) => {
       state.swapToToken = action.payload;
-      state.isSelectTokenModalVisible = false;
+      state.isSelectToTokenModalVisible = false;
     },
 
     setSwapFromTokenAmount: (state, action) => {
@@ -38,22 +39,29 @@ export const swapSlice = createSlice({
 
     setSwapToTokenAmount: (state, action) => {
       state.swapToToken.amount = action.payload;
-      state.isSelectTokenModalVisible = false;
     },
 
     removeSwapToToken: (state, action) => {
       state.swapToToken = null;
     },
 
-    openSelectTokenModal: (state, action) => {
-      state.isSelectTokenModalVisible = true;
+    openSelectFromTokenModal: (state, action) => {
+      state.isSelectFromTokenModalVisible = true;
     },
 
-    closeSelectTokenModal: (state, action) => {
-      state.isSelectTokenModalVisible = false;
+    openSelectToTokenModal: (state, action) => {
+      state.isSelectToTokenModalVisible = true;
     },
 
-    exchange: (state, action) => {
+    closeSelectFromTokenModal: (state, action) => {
+      state.isSelectFromTokenModalVisible = false;
+    },
+
+    closeSelectToTokenModal: (state, action) => {
+      state.isSelectToTokenModalVisible = false;
+    },
+
+    switchTokens: (state, action) => {
       if (!state.swapFromToken) {
         return;
       }
@@ -78,9 +86,11 @@ export const {
   setSwapToTokenAmount,
   removeSwapFromToken,
   removeSwapToToken,
-  openSelectTokenModal,
-  closeSelectTokenModal,
-  exchange,
+  openSelectFromTokenModal,
+  openSelectToTokenModal,
+  closeSelectFromTokenModal,
+  closeSelectToTokenModal,
+  switchTokens,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;
@@ -92,3 +102,9 @@ export const selectTokens = (state) => {
       token.symbol != _.get(state.swap.swapToToken, 'symbol')
   );
 };
+
+export const selectIsSelectFromTokenModalVisible = (state) => state.swap.isSelectFromTokenModalVisible;
+export const selectIsSelectToTokenModalVisible = (state) => state.swap.isSelectToTokenModalVisible;
+export const selectSwapFromToken = (state) => state.swap.swapFromToken;
+export const selectSwapToToken = (state) => state.swap.swapToToken;
+export const selectCanSwapToken = (state) => !_.isEmpty(state.swap.swapFromToken) && !_.isEmpty(state.swap.swapToToken)

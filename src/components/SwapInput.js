@@ -1,34 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { InputNumber } from 'antd';
 import './SwapInput.css';
 
-export class SwapInput extends Component {
-  render() {
-    return (
-      <div className="SwapInput">
-        <div className="SwapInput__label">{this.props.label}</div>
-        <div
-          className={
-            this.props.token && this.props.token.amount > 0
-              ? 'SwapInput__amount--filled'
-              : 'SwapInput__amount'
-          }
-        >
-          <InputNumber
-            value={this.props.token ? this.props.token.amount : null}
-            placeholder={0}
-            bordered={false}
-            controls={false}
-            style={{ width: '100%' }}
-            disabled={this.props.token ? false : true}
-            autoFocus={this.props.autoFocus}
-            onChange={(value) => this.props.onChange(value)}
-          />
-        </div>
-        <div className="SwapInput__balance">Balance: {this.props.balance}</div>
-      </div>
-    );
-  }
-}
+export const SwapInput = (props) => {
+  const dispatch = useDispatch();
 
-export default SwapInput;
+  return (
+    <div className="SwapInput">
+      <div className="SwapInput__label">{props.label}</div>
+      <div
+        className={
+          props.token && props.token.amount > 0
+            ? 'SwapInput__amount--filled'
+            : 'SwapInput__amount'
+        }
+      >
+        <InputNumber
+          value={props.token ? props.token.amount : null}
+          placeholder={0}
+          bordered={false}
+          controls={false}
+          style={{ width: '100%' }}
+          disabled={props.token ? false : true}
+          autoFocus={props.autoFocus}
+          onChange={(value) => dispatch(props.setTokenAmount(value))}
+        />
+      </div>
+      <div className="SwapInput__balance">Balance: {props.balance}</div>
+    </div>
+  );
+};

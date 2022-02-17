@@ -1,12 +1,5 @@
-import React, { Component } from 'react';
-import './Vote.css';
+import React from 'react';
 
-export class Vote extends Component {
-  render() {
-    return (
-      <div className="Vote">Vote</div>
-    )
-  }
-}
-
-export default Vote
+export const Vote = () => {
+  return <div className="Vote">Vote</div>;
+};

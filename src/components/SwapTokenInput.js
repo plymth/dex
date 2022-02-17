@@ -1,56 +1,43 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Row, Col, Avatar } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';
 import { ReactComponent as Close } from '../assets/close-circle.svg';
 import Button from '../common/Button';
-import { openSelectTokenModal } from '../features/swap/swapSlice';
+
 import './SwapTokenInput.css';
 
-export class SwapTokenInput extends Component {
-  render() {
-    return (
-      <div className="SwapTokenInput">
-        {this.props.token && (
-          <Row align="middle" justify="end">
-            <Col>
-              <Close
-                className="SwapTokenInput__close"
-                onClick={this.props.removeToken}
-              />
-            </Col>
-            <Col onClick={() => this.props.setSelectTokenModalAction()}>
-              <Avatar
-                src={this.props.token.icon}
-                className="SwapTokenInput__icon"
-              />
-            </Col>
-            <Col onClick={() => this.props.setSelectTokenModalAction()}>
-              <div className="SwapTokenInput__symbol">
-                {this.props.token.symbol}
-              </div>
-            </Col>
-            <Col onClick={() => this.props.setSelectTokenModalAction()}>
-              <Caret className="SwapTokenInput__caret" />
-            </Col>
-          </Row>
-        )}
-        {!this.props.token && (
-          <Button
-            label="Select a Token"
-            icon
-            onClick={() => this.props.setSelectTokenModalAction()}
-          />
-        )}
-      </div>
-    );
-  }
-}
+export const SwapTokenInput = (props) => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = () => {
-  return {
-    openSelectTokenModal,
-  };
+  return (
+    <div className="SwapTokenInput">
+      {props.token && (
+        <Row align="middle" justify="end">
+          <Col>
+            <Close
+              className="SwapTokenInput__close"
+              onClick={() => dispatch(props.removeToken())}
+            />
+          </Col>
+          <Col onClick={() => dispatch(props.openSelectTokenModal())}>
+            <Avatar src={props.token.icon} className="SwapTokenInput__icon" />
+          </Col>
+          <Col onClick={() => dispatch(props.openSelectTokenModal())}>
+            <div className="SwapTokenInput__symbol">{props.token.symbol}</div>
+          </Col>
+          <Col onClick={() => dispatch(props.openSelectTokenModal())}>
+            <Caret className="SwapTokenInput__caret" />
+          </Col>
+        </Row>
+      )}
+      {!props.token && (
+        <Button
+          label="Select a Token"
+          icon
+          onClick={() => dispatch(props.openSelectTokenModal())}
+        />
+      )}
+    </div>
+  );
 };
-
-export default connect(null, mapDispatchToProps())(SwapTokenInput);
