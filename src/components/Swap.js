@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Row, Col } from 'antd';
 import { SettingOutlined } from '@ant-design/icons/lib/icons';
 import { SwapActions } from './SwapActions';
@@ -16,7 +16,6 @@ import './Swap.css';
 export const Swap = () => {
   const swapFromToken = useSelector(selectSwapFromToken);
   const swapToToken = useSelector(selectSwapToToken);
-  const dispatch = useDispatch();
 
   return (
     <div className="Swap">

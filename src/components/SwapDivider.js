@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Row, Col, Divider } from 'antd';
 import { ReactComponent as Button } from '../assets/exchange-btn.svg';
 import { switchTokens } from '../features/swap/swapSlice';

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pool.css';
 
 export const Pool = () => {
   return (
@@ -10,7 +11,7 @@ export const Pool = () => {
         can be claimed by withdrawing your liquidity.
       </p>
       <p>
-        <a href="">Read more about providing liquidity</a>
+        <a href="/">Read more about providing liquidity</a>
       </p>
     </div>
   );

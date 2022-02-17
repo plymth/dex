@@ -98,8 +98,8 @@ export default swapSlice.reducer;
 export const selectTokens = (state) => {
   return state.swap.tokens.filter(
     (token) =>
-      token.symbol != _.get(state.swap.swapFromToken, 'symbol') &&
-      token.symbol != _.get(state.swap.swapToToken, 'symbol')
+      token.symbol !== _.get(state.swap.swapFromToken, 'symbol') &&
+      token.symbol !== _.get(state.swap.swapToToken, 'symbol')
   );
 };
 
