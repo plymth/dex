@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from 'antd';
 import { SwapSelectTokenModal } from './SwapSelectTokenModal';

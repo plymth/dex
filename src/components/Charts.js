@@ -1,4 +1,3 @@
-import React from 'react';
 import './Charts.css';
 
 export const Charts = () => {

@@ -23,11 +23,13 @@ export const swapSlice = createSlice({
     setSwapFromToken: (state, action) => {
       state.swapFromToken = action.payload;
       state.isSelectFromTokenModalVisible = false;
+      state.searchToken = '';
     },
 
     setSwapToToken: (state, action) => {
       state.swapToToken = action.payload;
       state.isSelectToTokenModalVisible = false;
+      state.searchToken = '';
     },
 
     setSwapFromTokenAmount: (state, action) => {
@@ -56,10 +58,12 @@ export const swapSlice = createSlice({
 
     closeSelectFromTokenModal: (state, action) => {
       state.isSelectFromTokenModalVisible = false;
+      state.searchToken = '';
     },
 
     closeSelectToTokenModal: (state, action) => {
       state.isSelectToTokenModalVisible = false;
+      state.searchToken = '';
     },
 
     searchTokens: (state, action) => {
@@ -118,3 +122,4 @@ export const selectSwapFromToken = (state) => state.swap.swapFromToken;
 export const selectSwapToToken = (state) => state.swap.swapToToken;
 export const selectCanSwapToken = (state) =>
   !_.isEmpty(state.swap.swapFromToken) && !_.isEmpty(state.swap.swapToToken);
+export const selectSearchToken = (state) => state.swap.selectSearchToken;

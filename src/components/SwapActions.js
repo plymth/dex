@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, Col } from 'antd';
 import Button from '../common/Button';
 import { selectCanSwapToken } from '../features/swap/swapSlice';

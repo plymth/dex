@@ -1,4 +1,3 @@
-import React from 'react';
 import './Pool.css';
 
 export const Pool = () => {

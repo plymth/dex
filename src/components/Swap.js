@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
-import { Row, Col } from 'antd';
-import { SettingOutlined } from '@ant-design/icons/lib/icons';
-import { SwapActions } from './SwapActions';
+import { SwapHeader } from './SwapHeader';
 import { SwapFromInput } from './SwapFromInput';
+import { SwapDivider } from './SwapDivider';
 import { SwapToInput } from './SwapToInput';
+import { SwapPrice } from './SwapPrice';
+import { SwapActions } from './SwapActions';
 import { SwapFromSelectTokenModal } from './SwapFromSelectTokenModal';
 import { SwapToSelectTokenModal } from './SwapToSelectTokenModal';
+import { SwapData } from './SwapData';
 import {
   selectSwapFromToken,
   selectSwapToToken,
 } from '../features/swap/swapSlice';
-import { SwapDivider } from './SwapDivider';
 import './Swap.css';
 
 export const Swap = () => {
@@ -19,18 +20,17 @@ export const Swap = () => {
 
   return (
     <div className="Swap">
-      <Row align="middle" justify="center">
-        <Col span={24}>
-          <SettingOutlined className="Swap__setting" />
-          <div className="Swap__heading">Swap</div>
-        </Col>
-      </Row>
-      <SwapFromInput token={swapFromToken} />
-      <SwapDivider />
-      <SwapToInput token={swapToToken} />
-      <SwapActions />
-      <SwapFromSelectTokenModal />
-      <SwapToSelectTokenModal />
+      <div className="Swap__wrapper">
+        <SwapHeader />
+        <SwapFromInput token={swapFromToken} />
+        <SwapDivider />
+        <SwapToInput token={swapToToken} />
+        <SwapPrice />
+        <SwapActions />
+        <SwapFromSelectTokenModal />
+        <SwapToSelectTokenModal />
+      </div>
+      <SwapData />
     </div>
   );
 };

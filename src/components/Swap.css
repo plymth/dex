@@ -1,6 +1,5 @@
-.Swap {
+.Swap__wrapper {
   width: 464px;
-  height: 432px;
   background-color: #131118;
   border-radius: 8px;
   padding: 24px 24px 32px 24px;
@@ -22,6 +21,6 @@
   cursor: pointer;
 }
 
-.Swap__exchange-btn {
+.Swap__switch {
   cursor: pointer;
 }

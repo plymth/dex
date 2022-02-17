@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import { Layout, Col, Row } from 'antd';
 import './App.css';

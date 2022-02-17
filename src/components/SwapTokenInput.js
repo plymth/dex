@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Avatar } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';

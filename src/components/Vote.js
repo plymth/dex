@@ -1,4 +1,3 @@
-import React from 'react';
 import './Vote.css';
 
 export const Vote = () => {
