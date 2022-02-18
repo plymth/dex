@@ -13,6 +13,7 @@ export const SwapToInput = (props) => {
     <Row align="middle">
       <Col span={12}>
         <SwapInput
+          label="Swap to"
           token={props.token}
           setTokenAmount={setSwapToTokenAmount}
         />

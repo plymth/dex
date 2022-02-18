@@ -1,8 +1,10 @@
 import {
   CLOSE_SELECT_FROM_TOKEN_MODAL,
   CLOSE_SELECT_TO_TOKEN_MODAL,
+  CLOSE_TRANSACTION_SETTINGS_MODAL,
   OPEN_SELECT_FROM_TOKEN_MODAL,
   OPEN_SELECT_TO_TOKEN_MODAL,
+  OPEN_TRANSACTION_SETTINGS_MODAL,
   REMOVE_SWAP_FROM_TOKEN,
   REMOVE_SWAP_TO_TOKEN,
   SET_SWAP_FROM_TOKEN,
@@ -26,6 +28,7 @@ const initialState = {
   swapToToken: null,
   isSelectFromTokenModalOpen: false,
   isSelectToTokenModalOpen: false,
+  isTransactionSettingsModalOpen: false,
   tokens: tokens,
 };
 
@@ -105,6 +108,14 @@ export const swapReducer = (state = initialState, action) => {
 
     case REMOVE_SWAP_TO_TOKEN: {
       return { ...state, swapToToken: null };
+    }
+
+    case OPEN_TRANSACTION_SETTINGS_MODAL: {
+      return { ...state, isTransactionSettingsModalOpen: true };
+    }
+
+    case CLOSE_TRANSACTION_SETTINGS_MODAL: {
+      return { ...state, isTransactionSettingsModalOpen: false };
     }
 
     default:

@@ -1,8 +1,10 @@
 import {
   CLOSE_SELECT_FROM_TOKEN_MODAL,
   CLOSE_SELECT_TO_TOKEN_MODAL,
+  CLOSE_TRANSACTION_SETTINGS_MODAL,
   OPEN_SELECT_FROM_TOKEN_MODAL,
   OPEN_SELECT_TO_TOKEN_MODAL,
+  OPEN_TRANSACTION_SETTINGS_MODAL,
   REMOVE_SWAP_FROM_TOKEN,
   REMOVE_SWAP_TO_TOKEN,
   SET_SWAP_FROM_TOKEN,
@@ -64,4 +66,12 @@ export const setTokenSearch = (search) => ({
 
 export const switchTokens = () => ({
   type: SWITCH_TOKENS,
+});
+
+export const openTransactionSettingsModal = () => ({
+  type: OPEN_TRANSACTION_SETTINGS_MODAL,
+});
+
+export const closeTransactionSettingsModal = () => ({
+  type: CLOSE_TRANSACTION_SETTINGS_MODAL,
 });

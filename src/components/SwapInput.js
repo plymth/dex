@@ -16,8 +16,10 @@ export const SwapInput = (props) => {
         }
       >
         <InputNumber
+          autoFocus
           value={props.token ? props.token.amount : null}
-          placeholder={0}
+          placeholder="0.00"
+          type="number"
           bordered={false}
           controls={false}
           style={{ width: '100%' }}

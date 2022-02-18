@@ -14,8 +14,10 @@ export const SwapFromInput = (props) => {
     <Row align="middle">
       <Col span={12}>
         <SwapInput
+          label="Swap from"
           token={props.token}
           setTokenAmount={setSwapFromTokenAmount}
+          autoFocus={props.autoFocus}
         />
       </Col>
       <Col span={12}>
