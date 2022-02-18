@@ -5,7 +5,7 @@ import './SwapData.css';
 
 export const SwapData = () => {
   return (
-    <div class="SwapData">
+    <div className="SwapData">
       <Row>
         <Col span={14}>
           <div className="SwapData__label">Minimum received</div>

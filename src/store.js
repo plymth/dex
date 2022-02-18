@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import swapReducer from './features/swap/swapSlice';
+import { swapReducer } from './reducers/Swap.reducer';
 
-// Define selectors and reducer functions
-// Define a slice called swapSlice
-
-export default configureStore({
+const store = configureStore({
   reducer: {
     swap: swapReducer,
   },
 });
+
+export default store;

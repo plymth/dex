@@ -1,11 +1,11 @@
 import { Row, Col } from 'antd';
-import Button from '../common/Button';
-import { selectCanSwapToken } from '../features/swap/swapSlice';
+import { Button } from '../common/Button';
 import { useSelector } from 'react-redux';
+import { selectCanSwapToken } from '../selectors/Swap.selector';
 
 export const SwapActions = () => {
   const canSwapToken = useSelector(selectCanSwapToken);
-  
+
   return (
     <Row style={{ paddingTop: '30px' }}>
       {!canSwapToken && (

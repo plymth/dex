@@ -1,33 +1,20 @@
-import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';
 import './Button.css';
 
-export class Button extends Component {
-  constructor(props) {
-    super(props);
+export const Button = (props) => {
+  const className = () => (props.type ? `Button--${props.type}` : 'Button');
 
-    this.state = {
-      className: this.props.type ? `Button--${this.props.type}` : 'Button',
-    };
-  }
-
-  render() {
-    return (
-      <button className={this.state.className} onClick={this.props.onClick}>
-        <Row align="middle">
-          <Col span={this.props.icon ? 20 : 24}>
-            {this.props.label} {this.state.first}
+  return (
+    <button className={className()} onClick={props.onClick}>
+      <Row align="middle">
+        <Col span={props.icon ? 20 : 24}>{props.label}</Col>
+        {props.icon && (
+          <Col>
+            <Caret className="Button__icon" />
           </Col>
-          {this.props.icon && (
-            <Col>
-              <Caret className="Button__icon" />
-            </Col>
-          )}
-        </Row>
-      </button>
-    );
-  }
-}
-
-export default Button;
+        )}
+      </Row>
+    </button>
+  );
+};

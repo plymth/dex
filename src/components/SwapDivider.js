@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Divider } from 'antd';
 import { ReactComponent as Button } from '../assets/switch.svg';
-import { switchTokens } from '../features/swap/swapSlice';
+import { switchTokens } from '../actions/Swap.action';
 
 export const SwapDivider = () => {
   const dispatch = useDispatch();

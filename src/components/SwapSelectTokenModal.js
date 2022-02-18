@@ -2,14 +2,14 @@ import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import { ReactComponent as Search } from '../assets/search.svg';
 import { SwapSelectTokenModalRow } from './SwapSelectTokenModalRow';
-import { selectTokens } from '../features/swap/swapSlice';
 import { useSelector } from 'react-redux';
+import { selectTokenSearch, selectTokens } from '../selectors/Swap.selector';
+import { setTokenSearch } from '../actions/Swap.action';
 import './SwapSelectTokenModal.css';
-import { searchTokens, selectSearchToken } from '../features/swap/swapSlice';
 
 export const SwapSelectTokenModal = (props) => {
+  const tokenSearch = useSelector(selectTokenSearch);
   const tokens = useSelector(selectTokens);
-  const search = useSelector(selectSearchToken);
   const dispatch = useDispatch();
 
   const getContentClass = () => {
@@ -29,9 +29,10 @@ export const SwapSelectTokenModal = (props) => {
         <Col span={20}>
           <input
             type="text"
-            value={search}
+            value={tokenSearch}
             placeholder="Search name or paste address"
-            onChange={(e) => dispatch(searchTokens(e.target.value))}
+            onChange={(e) => dispatch(setTokenSearch(e.target.value))}
+            autoFocus={true}
           />
         </Col>
         <Col span={4}>

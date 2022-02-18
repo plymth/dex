@@ -6,7 +6,7 @@ import {
   setSwapToTokenAmount,
   removeSwapToToken,
   openSelectToTokenModal,
-} from '../features/swap/swapSlice';
+} from '../actions/Swap.action';
 
 export const SwapToInput = (props) => {
   return (

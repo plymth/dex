@@ -2,23 +2,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from 'antd';
 import { SwapSelectTokenModal } from './SwapSelectTokenModal';
 import { ReactComponent as Close } from '../assets/close-small.svg';
+import { selectIsSelectToTokenModalOpen } from '../selectors/Swap.selector';
 import {
-  selectIsSelectToTokenModalVisible,
-  closeSelectToTokenModal,
   setSwapToToken,
-} from '../features/swap/swapSlice';
+  closeSelectToTokenModal,
+} from '../actions/Swap.action';
 
 export const SwapToSelectTokenModal = () => {
-  const isSelectToTokenModalVisible = useSelector(
-    selectIsSelectToTokenModalVisible
-  );
-
+  const isSelectToTokenModalOpen = useSelector(selectIsSelectToTokenModalOpen);
   const dispatch = useDispatch();
 
   return (
     <Modal
       footer={null}
-      visible={isSelectToTokenModalVisible}
+      visible={isSelectToTokenModalOpen}
       maskStyle={{ backdropFilter: 'blur(8px)' }}
       onCancel={() => dispatch(closeSelectToTokenModal())}
       className="SwapSelectTokenModal"

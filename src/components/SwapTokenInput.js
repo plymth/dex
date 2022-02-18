@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Row, Col, Avatar } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';
 import { ReactComponent as Close } from '../assets/close-circle.svg';
-import Button from '../common/Button';
+import {Button} from '../common/Button';
 
 import './SwapTokenInput.css';
 
