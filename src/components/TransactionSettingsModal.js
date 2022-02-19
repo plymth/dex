@@ -7,7 +7,7 @@ import { selectIsTransactionSettingsModalOpen } from '../selectors/Swap.selector
 import './TransactionSettingsModal.css';
 
 export const TransactionSettingsModal = () => {
-  const isTransactionSettingsModalOption = useSelector(
+  const isTransactionSettingsModalOpen = useSelector(
     selectIsTransactionSettingsModalOpen
   );
 
@@ -15,11 +15,11 @@ export const TransactionSettingsModal = () => {
 
   return (
     <Modal
-      onCancel={() => dispatch(closeTransactionSettingsModal())}
-      visible={isTransactionSettingsModalOption}
-      className="TransactionSettingsModal"
-      width={342}
       mask={false}
+      onCancel={() => dispatch(closeTransactionSettingsModal())}
+      visible={isTransactionSettingsModalOpen}
+      className="TransactionSettingsModal ant-modal-content"
+      width={342}
       modalRender={() => <TransactionSettings />}
     ></Modal>
   );

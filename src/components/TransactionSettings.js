@@ -1,6 +1,7 @@
-import { Row, Col, Switch } from 'antd';
+import { Row, Col, Switch, Tooltip } from 'antd';
 import { ReactComponent as Question } from '../assets/question-help.svg';
 import './TransactionSettings.css';
+import { SLIPPAGE_TOLERANCE } from '../constants/Tooltip.constants';
 
 export const TransactionSettings = () => {
   return (
@@ -15,12 +16,15 @@ export const TransactionSettings = () => {
       <Row>
         <Col>
           <div className="TransactionSettings__label">Slippage Tolerance</div>
-          <Question className="TransactionSettings__help" />
+          <Tooltip title={SLIPPAGE_TOLERANCE} color="#2f2a3c" style={{ padding: '30px'}}>
+            <Question className="TransactionSettings__help" />
+          </Tooltip>
         </Col>
       </Row>
       <Row gutter={16} className="TransactionSettings__slippage">
         <Col span={6}>
           <input
+            autoFocus
             type="text"
             placeholder="0.1%"
             className="TransactionSettings__input"
