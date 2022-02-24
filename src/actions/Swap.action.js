@@ -12,6 +12,7 @@ import {
   SET_SWAP_TO_TOKEN,
   SET_SWAP_TO_TOKEN_AMOUNT,
   SET_TOKEN_SEARCH,
+  SWAP_TOKEN,
   SWITCH_TOKENS,
 } from '../constants/Swap.constant';
 
@@ -74,4 +75,8 @@ export const openTransactionSettingsModal = () => ({
 
 export const closeTransactionSettingsModal = () => ({
   type: CLOSE_TRANSACTION_SETTINGS_MODAL,
+});
+
+export const swapToken = () => ({
+  type: SWAP_TOKEN,
 });

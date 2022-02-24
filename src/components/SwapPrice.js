@@ -1,21 +1,37 @@
+import styled from 'styled-components';
 import { Row, Col } from 'antd';
 import { ReactComponent as Exchange } from '../assets/exchange.svg';
-import './SwapPrice.css';
+
+const StyledSwapPrice = styled.div`
+  font-size: 16px;
+  line-height: 24px;
+  color: #a6a0bb;
+  padding: 24px 0 24px 0;
+`;
+
+const Price = styled.div`
+  text-align: right;
+  margin-right: 8px;
+`;
+
+const StyledExchange = styled(Exchange)`
+  display: block;
+  cursor: pointer;
+  float: right;
+`;
 
 export const SwapPrice = () => {
   return (
-    <div className="SwapPrice">
+    <StyledSwapPrice>
       <Row align="middle">
-        <Col span={4}>
-          <div className="SwapPrice__label">Price</div>
-        </Col>
+        <Col span={4}>Price</Col>
         <Col span={18}>
-          <div className="SwapPrice__amount">0.002167 ETH per 1INCH</div>
+          <Price>0.002167 ETH per 1INCH</Price>
         </Col>
         <Col span={2}>
-          <Exchange className="SwapPrice__exchange" />
+          <StyledExchange />
         </Col>
       </Row>
-    </div>
+    </StyledSwapPrice>
   );
 };

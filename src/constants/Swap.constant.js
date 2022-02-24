@@ -22,3 +22,5 @@ export const CLOSE_TRANSACTION_SETTINGS_MODAL =
 export const SET_TOKEN_SEARCH = 'SET_TOKEN_SEARCH';
 
 export const SWITCH_TOKENS = 'SWITCH_TOKENS';
+
+export const SWAP_TOKEN = 'SWAP_TOKEN';

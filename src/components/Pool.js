@@ -1,5 +1,3 @@
-import './Pool.css';
-
 export const Pool = () => {
   return (
     <div className="Pool">

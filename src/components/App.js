@@ -1,22 +1,39 @@
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { Layout, Col, Row } from 'antd';
-import './App.css';
 import { Navbar } from './Navbar';
 import { Swap } from './Swap';
 import { Pool } from './Pool';
 import { About } from './About';
 import { Vote } from './Vote';
 import { Charts } from './Charts';
+import './App.css';
 
 const { Header, Content } = Layout;
 
+const StyledLayout = styled(Layout)`
+  width: 1440px;
+  background-color: #09080c;
+  margin: auto;
+`;
+
+const StyledHeader = styled(Header)`
+  background-color: #09080c;
+  margin: 20px 0 80px 0;
+`;
+
+const StyledContent = styled(Content)`
+  height: 100vh;
+  background-color: #09080c;
+`;
+
 export const App = () => {
   return (
-    <Layout className="App__layout">
-      <Header className="App__header">
+    <StyledLayout>
+      <StyledHeader className="App__header">
         <Navbar />
-      </Header>
-      <Content className="App__content">
+      </StyledHeader>
+      <StyledContent className="App__content">
         <Row justify="center">
           <Col>
             <Routes>
@@ -29,7 +46,7 @@ export const App = () => {
             </Routes>
           </Col>
         </Row>
-      </Content>
-    </Layout>
+      </StyledContent>
+    </StyledLayout>
   );
 };

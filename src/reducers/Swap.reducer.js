@@ -12,6 +12,7 @@ import {
   SET_SWAP_TO_TOKEN,
   SET_SWAP_TO_TOKEN_AMOUNT,
   SET_TOKEN_SEARCH,
+  SWAP_TOKEN,
   SWITCH_TOKENS,
 } from '../constants/Swap.constant';
 import avalanche from '../assets/avalanche.svg';
@@ -30,6 +31,7 @@ const initialState = {
   isSelectToTokenModalOpen: false,
   isTransactionSettingsModalOpen: false,
   tokens: tokens,
+  isSwapConfirmVisible: false,
 };
 
 export const swapReducer = (state = initialState, action) => {
@@ -116,6 +118,10 @@ export const swapReducer = (state = initialState, action) => {
 
     case CLOSE_TRANSACTION_SETTINGS_MODAL: {
       return { ...state, isTransactionSettingsModalOpen: false };
+    }
+
+    case SWAP_TOKEN: {
+      return { ...state, isSwapConfirmVisible: true };
     }
 
     default:
