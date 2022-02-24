@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';
 import { ReactComponent as Close } from '../assets/close-circle.svg';
@@ -7,10 +8,9 @@ const StyledTokenSelectInput = styled.div`
   float: right;
 `;
 
-const Token = styled.div`
+const Token = styled.img`
   width: 40px;
   height: 40px;
-  background: #413b54;
   border-radius: 20px;
   margin-right: 8px;
   cursor: pointer;
@@ -36,18 +36,20 @@ const StyledClose = styled(Close)`
   cursor: pointer;
 `;
 
-export const TokenSelectInput = () => {
+export const TokenSelectInput = ({ token, onRemove }) => {
+  const dispatch = useDispatch();
+
   return (
     <StyledTokenSelectInput>
       <Row align="middle">
         <Col>
-          <StyledClose />
+          <StyledClose onClick={() => dispatch(onRemove(token))} />
         </Col>
         <Col>
-          <Token />
+          <Token src={token.icon} />
         </Col>
         <Col>
-          <Symbol>ETH</Symbol>
+          <Symbol>{token.symbol}</Symbol>
         </Col>
         <Col>
           <StyledCaret />

@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Card } from './Card';
 import { StyledCard } from './Card';
@@ -6,6 +7,11 @@ import { TokenSwitch } from './TokenSwitch';
 import { SwapPrice } from './SwapPrice';
 import { SwapInfo } from './SwapInfo';
 import { Button } from './Button';
+import {
+  selectSwapFromToken,
+  selectSwapToToken,
+} from '../selectors/Swap.selector';
+import { removeSwapFromToken, removeSwapToToken } from '../actions/Swap.action';
 
 const StyledSwapFill = styled.div`
   width: 464px;
@@ -15,12 +21,15 @@ const StyledSwapFill = styled.div`
 `;
 
 export const SwapFill = () => {
+  const swapFromToken = useSelector(selectSwapFromToken);
+  const swapToToken = useSelector(selectSwapToToken);
+
   return (
     <StyledSwapFill>
       <Card title="Swap">
-        <SwapRow />
+        <SwapRow token={swapFromToken} onRemove={removeSwapFromToken} />
         <TokenSwitch />
-        <SwapRow />
+        <SwapRow token={swapToToken} onRemove={removeSwapToToken} />
         <SwapPrice />
         <Button title="Swap" />
       </Card>

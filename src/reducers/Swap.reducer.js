@@ -20,10 +20,11 @@ import tokens from '../data/tokens';
 
 const initialState = {
   swapFromToken: {
+    label: 'Swap from',
     name: 'Avalanche',
     symbol: 'AVAX',
     icon: avalanche,
-    amount: null,
+    amount: 0.0,
   },
   tokenSearch: '',
   swapToToken: null,
