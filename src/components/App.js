@@ -19,7 +19,7 @@ const StyledLayout = styled(Layout)`
 
 const StyledHeader = styled(Header)`
   background-color: #09080c;
-  margin: 20px 0 80px 0;
+  margin: 20px 0 64px 0;
 `;
 
 const StyledContent = styled(Content)`

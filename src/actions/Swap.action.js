@@ -1,9 +1,11 @@
 import {
   CLOSE_SELECT_FROM_TOKEN_MODAL,
   CLOSE_SELECT_TO_TOKEN_MODAL,
+  CLOSE_TOKEN_SELECT_MODAL,
   CLOSE_TRANSACTION_SETTINGS_MODAL,
   OPEN_SELECT_FROM_TOKEN_MODAL,
   OPEN_SELECT_TO_TOKEN_MODAL,
+  OPEN_TOKEN_SELECT_MODAL,
   OPEN_TRANSACTION_SETTINGS_MODAL,
   REMOVE_SWAP_FROM_TOKEN,
   REMOVE_SWAP_TO_TOKEN,
@@ -75,6 +77,14 @@ export const openTransactionSettingsModal = () => ({
 
 export const closeTransactionSettingsModal = () => ({
   type: CLOSE_TRANSACTION_SETTINGS_MODAL,
+});
+
+export const openTokenSelectModal = () => ({
+  type: OPEN_TOKEN_SELECT_MODAL,
+});
+
+export const closeTokenSelectModal = () => ({
+  type: CLOSE_TOKEN_SELECT_MODAL,
 });
 
 export const swapToken = () => ({

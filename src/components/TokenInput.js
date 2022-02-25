@@ -36,10 +36,10 @@ const Balance = styled.label`
   margin-top: 4px;
 `;
 
-export const TokenInput = ({ token }) => {
+export const TokenInput = ({ token, label }) => {
   return (
     <StyledTokenInput>
-      <Label>{token.label}</Label>
+      <Label>{label}</Label>
       <Input placeholder="0.0" />
       <Balance>Balance: 70.42</Balance>
     </StyledTokenInput>

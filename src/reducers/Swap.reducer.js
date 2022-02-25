@@ -1,9 +1,11 @@
 import {
   CLOSE_SELECT_FROM_TOKEN_MODAL,
   CLOSE_SELECT_TO_TOKEN_MODAL,
+  CLOSE_TOKEN_SELECT_MODAL,
   CLOSE_TRANSACTION_SETTINGS_MODAL,
   OPEN_SELECT_FROM_TOKEN_MODAL,
   OPEN_SELECT_TO_TOKEN_MODAL,
+  OPEN_TOKEN_SELECT_MODAL,
   OPEN_TRANSACTION_SETTINGS_MODAL,
   REMOVE_SWAP_FROM_TOKEN,
   REMOVE_SWAP_TO_TOKEN,
@@ -20,7 +22,6 @@ import tokens from '../data/tokens';
 
 const initialState = {
   swapFromToken: {
-    label: 'Swap from',
     name: 'Avalanche',
     symbol: 'AVAX',
     icon: avalanche,
@@ -28,6 +29,7 @@ const initialState = {
   },
   tokenSearch: '',
   swapToToken: null,
+  isTokenSelectModalVisible: false,
   isSelectFromTokenModalOpen: false,
   isSelectToTokenModalOpen: false,
   isTransactionSettingsModalOpen: false,
@@ -123,6 +125,14 @@ export const swapReducer = (state = initialState, action) => {
 
     case SWAP_TOKEN: {
       return { ...state, isSwapConfirmVisible: true };
+    }
+
+    case OPEN_TOKEN_SELECT_MODAL: {
+      return { ...state, isTokenSelectModalVisible: true };
+    }
+
+    case CLOSE_TOKEN_SELECT_MODAL: {
+      return { ...state, isTokenSelectModalVisible: false };
     }
 
     default:

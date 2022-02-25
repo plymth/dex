@@ -32,3 +32,6 @@ export const selectIsTransactionSettingsModalOpen = (state) =>
 
 export const selectIsSwapConfirmVisible = (state) =>
   state.swap.isSwapConfirmVisible;
+
+export const selectIsTokenSelectModalVisible = (state) =>
+  state.swap.isTokenSelectModalVisible;

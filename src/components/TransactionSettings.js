@@ -1,100 +1,171 @@
 import { Row, Col, Switch, Tooltip } from 'antd';
+import styled from 'styled-components';
 import { ReactComponent as Question } from '../assets/question-help.svg';
-import './TransactionSettings.css';
 import { SLIPPAGE_TOLERANCE } from '../constants/Tooltip.constants';
+
+const StyledTransactionSettings = styled.div``;
+
+const Title = styled.div`
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 32px;
+`;
+
+const TitleInterface = styled.div`
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: left;
+  margin-bottom: 32px;
+`;
+
+const Label = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  display: inline-block;
+  margin-bottom: 16px;
+  margin-right: 8px;
+`;
+
+const LabelMinutes = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #a6a0bb;
+  display: inline-block;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-top: 4px;
+`;
+
+const StyledQuestion = styled(Question)`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
+const Input = styled.input`
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: #2f2a3c;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  ::placeholder {
+    color: #a6a0bb;
+  }
+`;
+
+const InputMinutes = styled.input`
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: #2f2a3c;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  margin-bottom: 32px;
+  display: inline-block;
+  ::placeholder {
+    color: #a6a0bb;
+  }
+`;
+
+const StyledSwitch = styled(Switch)`
+  &.ant-switch {
+    background-color: #2f2a3c;
+  }
+  &.ant-switch-checked {
+    background-color: #a869ed;
+  }
+  &.ant-switch-checked:focus {
+    box-shadow: none;
+  }
+  float: right;
+`;
+
+const Spacer = styled.div`
+  height: 32px;
+`;
 
 export const TransactionSettings = () => {
   return (
-    <div className="TransactionSettings">
-      <Row justify="center">
+    <StyledTransactionSettings>
+      <Row>
         <Col span={24}>
-          <div className="TransactionSettings__heading">
-            Transaction Settings
-          </div>
+          <Title>Transaction Settings</Title>
         </Col>
       </Row>
       <Row>
         <Col>
-          <div className="TransactionSettings__label">Slippage Tolerance</div>
-          <Tooltip title={SLIPPAGE_TOLERANCE} color="#2f2a3c" style={{ padding: '30px'}}>
-            <Question className="TransactionSettings__help" />
+          <Label>Slippage Tolerance</Label>
+          <Tooltip title={SLIPPAGE_TOLERANCE}>
+            <StyledQuestion />
           </Tooltip>
         </Col>
       </Row>
-      <Row gutter={16} className="TransactionSettings__slippage">
+      <Row gutter={16}>
         <Col span={6}>
-          <input
-            autoFocus
-            type="text"
-            placeholder="0.1%"
-            className="TransactionSettings__input"
-          />
+          <Input placeholder="0.01%" />
         </Col>
         <Col span={6}>
-          <input
-            type="text"
-            placeholder="0.1%"
-            className="TransactionSettings__input"
-          />
+          <Input placeholder="0.01%" />
         </Col>
         <Col span={6}>
-          <input
-            type="text"
-            placeholder="0.1%"
-            className="TransactionSettings__input"
-          />
+          <Input placeholder="0.01%" />
         </Col>
         <Col span={6}>
-          <input
-            type="text"
-            placeholder="0.1%"
-            className="TransactionSettings__input"
-          />
+          <Input placeholder="0.01%" />
         </Col>
       </Row>
+      <Spacer />
       <Row>
-        <Col span={24}>
-          <div className="TransactionSettings__label">Transaction Deadline</div>
-          <Question className="TransactionSettings__help" />
+        <Col>
+          <Label>Transaction Deadline</Label>
+          <StyledQuestion />
         </Col>
       </Row>
       <Row>
         <Col span={10}>
-          <input
-            type="text"
-            placeholder="20"
-            className="TransactionSettings__input--minutes"
-          />
+          <InputMinutes placeholder="20" />
         </Col>
-        <Col span={14}>
-          <div className="TransactionSettings__label--minutes">minutes</div>
+        <Col>
+          <LabelMinutes>minutes</LabelMinutes>
         </Col>
       </Row>
       <Row>
         <Col>
-          <div className="TransactionSettings__heading--interface">
-            Interface Settings
-          </div>
+          <TitleInterface>Interface Settings</TitleInterface>
         </Col>
       </Row>
       <Row>
         <Col span={18}>
-          <div className="TransactionSettings__label">Toggle Expert Mode</div>
-          <Question className="TransactionSettings__help" />
+          <Label>Toggle Expert Mode</Label>
+          <StyledQuestion />
         </Col>
         <Col span={6}>
-          <Switch className="TransactionSettings__switch" />
+          <StyledSwitch />
         </Col>
       </Row>
       <Row>
         <Col span={18}>
-          <div className="TransactionSettings__label"> Disable Multihops</div>
-          <Question className="TransactionSettings__help" />
+          <Label>Disable Multihops</Label>
+          <StyledQuestion />
         </Col>
         <Col span={6}>
-          <Switch className="TransactionSettings__switch" />
+          <StyledSwitch />
         </Col>
       </Row>
-    </div>
+    </StyledTransactionSettings>
   );
 };

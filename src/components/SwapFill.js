@@ -12,6 +12,7 @@ import {
   selectSwapToToken,
 } from '../selectors/Swap.selector';
 import { removeSwapFromToken, removeSwapToToken } from '../actions/Swap.action';
+import { SWAP_FROM_LABEL, SWAP_TO_LABEL } from '../constants/Swap.constant';
 
 const StyledSwapFill = styled.div`
   width: 464px;
@@ -27,9 +28,17 @@ export const SwapFill = () => {
   return (
     <StyledSwapFill>
       <Card title="Swap">
-        <SwapRow token={swapFromToken} onRemove={removeSwapFromToken} />
+        <SwapRow
+          token={swapFromToken}
+          label={SWAP_FROM_LABEL}
+          onRemove={removeSwapFromToken}
+        />
         <TokenSwitch />
-        <SwapRow token={swapToToken} onRemove={removeSwapToToken} />
+        <SwapRow
+          token={swapToToken}
+          label={SWAP_TO_LABEL}
+          onRemove={removeSwapToToken}
+        />
         <SwapPrice />
         <Button title="Swap" />
       </Card>

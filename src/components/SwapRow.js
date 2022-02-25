@@ -12,7 +12,7 @@ export const SwapRow = ({ token, readOnly, onRemove }) => {
   return (
     <StyledSwapRow readOnly={readOnly}>
       <Row align="middle">
-        <Col span={12}>{token && <TokenInput token={token} />}</Col>
+        <Col span={12}><TokenInput token={token} /></Col>
         <Col span={12}>
           {!token && <Button title="Select a Token" fixed></Button>}
           {token && <TokenSelectInput token={token} onRemove={onRemove} />}
