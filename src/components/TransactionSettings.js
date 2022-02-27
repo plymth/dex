@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { ReactComponent as Question } from '../assets/question-help.svg';
 import { SLIPPAGE_TOLERANCE } from '../constants/Tooltip.constants';
 
-const StyledTransactionSettings = styled.div``;
+const StyledTransactionSettings = styled.div`
+  width: auto;
+  height: auto;
+  pointer-events: auto;
+`;
 
 const Title = styled.div`
   font-size: 20px;
@@ -116,7 +120,7 @@ export const TransactionSettings = () => {
       </Row>
       <Row gutter={16}>
         <Col span={6}>
-          <Input placeholder="0.01%" />
+          <Input placeholder="0.01%" autoFocus />
         </Col>
         <Col span={6}>
           <Input placeholder="0.01%" />

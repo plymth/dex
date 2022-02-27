@@ -7,19 +7,20 @@ import { closeTokenSelectModal } from '../actions/Swap.action';
 
 const StyledSelectModal = styled(Modal)``;
 
-export const TokenSelectModal = () => {
+export const TokenSelectModal = ({ setToken }) => {
   const isTokenSelectModalVisible = useSelector(
     selectIsTokenSelectModalVisible
   );
   const dispatch = useDispatch();
-
+  
   return (
     <StyledSelectModal
-      mask={false}
+      mask={true}
+      width={464}
       onCancel={() => dispatch(closeTokenSelectModal())}
       visible={isTokenSelectModalVisible}
       maskStyle={{ backdropFilter: 'blur(8px)' }}
-      modalRender={() => <TokenSelect />}
+      modalRender={() => <TokenSelect setToken={setToken} />}
     ></StyledSelectModal>
   );
 };

@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
-import { TokenSelectModal } from './TokenSelectModal';
 import { ReactComponent as Caret } from '../assets/caret.svg';
 import { ReactComponent as Close } from '../assets/close-circle.svg';
 import { openTokenSelectModal } from '../actions/Swap.action';
@@ -38,7 +37,7 @@ const StyledClose = styled(Close)`
   cursor: pointer;
 `;
 
-export const TokenSelectInput = ({ token, onRemove }) => {
+export const TokenSelectInput = ({ token, removeToken }) => {
   const dispatch = useDispatch();
 
   return (
@@ -46,7 +45,7 @@ export const TokenSelectInput = ({ token, onRemove }) => {
       <StyledTokenSelectInput>
         <Row align="middle">
           <Col>
-            <StyledClose onClick={() => dispatch(onRemove(token))} />
+            <StyledClose onClick={() => dispatch(removeToken(token))} />
           </Col>
           <Col>
             <Token
@@ -55,14 +54,15 @@ export const TokenSelectInput = ({ token, onRemove }) => {
             />
           </Col>
           <Col>
-            <Symbol>{token.symbol}</Symbol>
+            <Symbol onClick={() => dispatch(openTokenSelectModal())}>
+              {token.symbol}
+            </Symbol>
           </Col>
           <Col>
-            <StyledCaret />
+            <StyledCaret onClick={() => dispatch(openTokenSelectModal())} />
           </Col>
         </Row>
       </StyledTokenSelectInput>
-      <TokenSelectModal />
     </>
   );
 };

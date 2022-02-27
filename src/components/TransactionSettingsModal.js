@@ -25,7 +25,6 @@ export const TransactionSettingsModal = () => {
       mask={false}
       onCancel={() => dispatch(closeTransactionSettingsModal())}
       visible={isTransactionSettingsModalOpen}
-      className="TransactionSettingsModal ant-modal-content"
       width={342}
       modalRender={() => <TransactionSettings />}
     ></StyledModal>
