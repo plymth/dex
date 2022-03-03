@@ -1,5 +1,6 @@
 import {
   REMOVE_TOKEN,
+  SET_SEARCH_TOKEN,
   SET_TOKEN,
   SET_TOKEN_AMOUNT,
   SWITCH_TOKENS,
@@ -9,6 +10,7 @@ import tokens from '../data/tokens';
 
 const initialState = {
   tokens,
+  searchToken: '',
   swapFromToken: {
     name: 'Avalanche',
     symbol: 'AVAX',
@@ -25,14 +27,17 @@ export const swapReducer = (state = initialState, action) => {
         return {
           ...state,
           swapFromToken: action.payload.token,
+          searchToken: '',
         };
       }
       if (action.payload.type === 'swapTo') {
         return {
           ...state,
           swapToToken: action.payload.token,
+          searchToken: '',
         };
       }
+      break;
     }
 
     case SET_TOKEN_AMOUNT: {
@@ -51,6 +56,7 @@ export const swapReducer = (state = initialState, action) => {
           swapToToken: { ...state.swapToToken, amount: action.payload.amount },
         };
       }
+      break;
     }
 
     case REMOVE_TOKEN: {
@@ -66,6 +72,7 @@ export const swapReducer = (state = initialState, action) => {
           swapToToken: null,
         };
       }
+      break;
     }
 
     case SWITCH_TOKENS: {
@@ -81,6 +88,13 @@ export const swapReducer = (state = initialState, action) => {
         ...state,
         swapFromToken: state.swapToToken,
         swapToToken: state.swapFromToken,
+      };
+    }
+
+    case SET_SEARCH_TOKEN: {
+      return {
+        ...state,
+        searchToken: action.payload.searchToken,
       };
     }
 

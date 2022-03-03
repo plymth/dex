@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import { ReactComponent as Search } from '../assets/search.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSearchToken } from '../selectors/Swap.selector';
+import { setSearchToken } from '../actions/Swap.action';
+import { Col, Row } from 'antd';
 import { ReactComponent as Close } from '../assets/close-small.svg';
-import { Row, Col } from 'antd';
+import { ReactComponent as Search } from '../assets/search.svg';
 import { TokenSelectList } from './TokenSelectList';
+import styled from 'styled-components';
 
 const StyledTokenSelect = styled.div`
   width: auto;
@@ -54,6 +57,9 @@ const Spacer = styled.div`
 `;
 
 export const TokenSelect = ({ type, onCancel }) => {
+  const searchToken = useSelector(selectSearchToken);
+  const dispatch = useDispatch();
+
   return (
     <StyledTokenSelect>
       <Row align="middle">
@@ -70,7 +76,9 @@ export const TokenSelect = ({ type, onCancel }) => {
         <Row>
           <Col span={20}>
             <TokenSearchInput
+              onChange={(e) => dispatch(setSearchToken(e.target.value))}
               placeholder="Search name or paste address"
+              value={searchToken}
               autoFocus
             />
           </Col>

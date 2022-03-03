@@ -1,5 +1,6 @@
 import {
   REMOVE_TOKEN,
+  SET_SEARCH_TOKEN,
   SET_TOKEN,
   SET_TOKEN_AMOUNT,
   SWITCH_TOKENS,
@@ -22,4 +23,9 @@ export const removeToken = (type) => ({
 
 export const switchTokens = () => ({
   type: SWITCH_TOKENS,
+});
+
+export const setSearchToken = (searchToken) => ({
+  type: SET_SEARCH_TOKEN,
+  payload: { searchToken },
 });
