@@ -1,11 +1,7 @@
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { ReactComponent as Search } from '../assets/search.svg';
 import { ReactComponent as Close } from '../assets/close-small.svg';
 import { Row, Col } from 'antd';
-import { selectTokenSearch } from '../selectors/Swap.selector';
-import { closeTokenSelectModal, setTokenSearch } from '../actions/Swap.action';
 import { TokenSelectList } from './TokenSelectList';
 
 const StyledTokenSelect = styled.div`
@@ -57,10 +53,7 @@ const Spacer = styled.div`
   height: 24px;
 `;
 
-export const TokenSelect = ({ setToken }) => {
-  const tokenSearch = useSelector(selectTokenSearch);
-  const dispatch = useDispatch();
-
+export const TokenSelect = ({ type, onCancel }) => {
   return (
     <StyledTokenSelect>
       <Row align="middle">
@@ -69,7 +62,7 @@ export const TokenSelect = ({ setToken }) => {
           <Title>Select a Token</Title>
         </Col>
         <Col span={2}>
-          <StyledClose onClick={() => dispatch(closeTokenSelectModal())} />
+          <StyledClose onClick={() => onCancel()} />
         </Col>
       </Row>
       <Spacer />
@@ -78,8 +71,6 @@ export const TokenSelect = ({ setToken }) => {
           <Col span={20}>
             <TokenSearchInput
               placeholder="Search name or paste address"
-              value={tokenSearch}
-              onChange={(e) => dispatch(setTokenSearch(e.target.value))}
               autoFocus
             />
           </Col>
@@ -88,7 +79,7 @@ export const TokenSelect = ({ setToken }) => {
           </Col>
         </Row>
       </TokenSearch>
-      <TokenSelectList setToken={setToken} />
+      <TokenSelectList type={type} onCancel={onCancel} />
     </StyledTokenSelect>
   );
 };

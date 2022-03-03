@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { setToken } from '../actions/Swap.action';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
 
@@ -29,11 +30,16 @@ const Price = styled.div`
   text-align: right;
 `;
 
-export const TokenSelectItem = ({ token, setToken }) => {
+export const TokenSelectItem = ({ token, type, onCancel }) => {
   const dispatch = useDispatch();
 
+  const handleTokenSelect = (token, type) => {
+    dispatch(setToken(token, type));
+    onCancel();
+  };
+
   return (
-    <StyledTokenSelectItem onClick={() => console.log(setToken)}>
+    <StyledTokenSelectItem onClick={() => handleTokenSelect(token, type)}>
       <Row align="middle">
         <Col span={4}>
           <Icon src={token.icon} />

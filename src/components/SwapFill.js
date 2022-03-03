@@ -1,4 +1,8 @@
 import { useSelector } from 'react-redux';
+import {
+  selectSwapFromToken,
+  selectSwapToToken,
+} from '../selectors/Swap.selector';
 import styled from 'styled-components';
 import { Card } from './Card';
 import { StyledCard } from './Card';
@@ -7,16 +11,6 @@ import { TokenSwitch } from './TokenSwitch';
 import { SwapPrice } from './SwapPrice';
 import { SwapInfo } from './SwapInfo';
 import { Button } from './Button';
-import {
-  selectSwapFromToken,
-  selectSwapToToken,
-} from '../selectors/Swap.selector';
-import {
-  removeSwapFromToken,
-  removeSwapToToken,
-  setSwapFromToken,
-  setSwapToToken,
-} from '../actions/Swap.action';
 import { SWAP_FROM_LABEL, SWAP_TO_LABEL } from '../constants/Swap.constant';
 
 const StyledSwapFill = styled.div`
@@ -26,7 +20,7 @@ const StyledSwapFill = styled.div`
   }
 `;
 
-export const SwapFill = () => {
+export const SwapFill = (props) => {
   const swapFromToken = useSelector(selectSwapFromToken);
   const swapToToken = useSelector(selectSwapToToken);
 
@@ -34,18 +28,13 @@ export const SwapFill = () => {
     <StyledSwapFill>
       <Card title="Swap">
         <SwapRow
-          token={swapFromToken}
           label={SWAP_FROM_LABEL}
-          removeToken={removeSwapFromToken}
-          setToken={setSwapFromToken}
+          token={swapFromToken}
+          type="swapFrom"
+          autoFocus
         />
         <TokenSwitch />
-        <SwapRow
-          token={swapToToken}
-          label={SWAP_TO_LABEL}
-          removeToken={removeSwapToToken}
-          setToken={setSwapToToken}
-        />
+        <SwapRow autoFocus={false} label={SWAP_TO_LABEL} token={swapToToken} type="swapTo" />
         <SwapPrice />
         <Button title="Swap" />
       </Card>

@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
 import { ReactComponent as Caret } from '../assets/caret.svg';
@@ -33,10 +32,8 @@ const StyledCaret = styled(Caret)`
 `;
 
 export const Button = ({ title, fixed, onClick }) => {
-  const dispatch = useDispatch();
-
   return (
-    <StyledButton fixed={fixed} onClick={() => dispatch(onClick())}>
+    <StyledButton fixed={fixed} onClick={() => onClick()}>
       {!fixed && (
         <Row>
           <Col span={24}>

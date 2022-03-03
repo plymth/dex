@@ -18,12 +18,10 @@ export const SwapSettings = () => {
 
   return (
     <>
-      <StyledSwapSettings
-        onClick={() => dispatch(openTransactionSettingsModal())}
-      >
+      <StyledSwapSettings>
         <StyledSettingOutlined />
       </StyledSwapSettings>
-      <TransactionSettingsModal />
+      {/* <TransactionSettingsModal /> */}
     </>
   );
 };

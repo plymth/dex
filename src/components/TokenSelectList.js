@@ -19,7 +19,7 @@ const StyledTokenSelectList = styled.div`
   }
 `;
 
-export const TokenSelectList = ({ setToken }) => {
+export const TokenSelectList = ({ type, onCancel }) => {
   const tokens = useSelector(selectTokens);
 
   return (
@@ -27,7 +27,8 @@ export const TokenSelectList = ({ setToken }) => {
       {tokens.map((token, index) => (
         <TokenSelectItem
           token={token}
-          setToken={setToken}
+          onCancel={onCancel}
+          type={type}
           key={index}
         ></TokenSelectItem>
       ))}

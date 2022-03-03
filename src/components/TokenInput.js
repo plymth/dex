@@ -1,7 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { setTokenAmount } from '../actions/Swap.action';
 import styled from 'styled-components';
 
-const StyledTokenInput = styled.div`
-`;
+const StyledTokenInput = styled.div``;
 
 const Label = styled.label`
   font-size: 16px;
@@ -36,11 +37,17 @@ const Balance = styled.label`
   margin-top: 4px;
 `;
 
-export const TokenInput = ({ token, label }) => {
+export const TokenInput = ({ token, label, type, autoFocus }) => {
+  const dispatch = useDispatch();
+
   return (
     <StyledTokenInput>
       <Label>{label}</Label>
-      <Input placeholder="0.0" />
+      <Input
+        value={token ? token.amount : ''}
+        placeholder="0.0"
+        onChange={(e) => dispatch(setTokenAmount(e.target.value, type))}
+      />
       <Balance>Balance: 70.42</Balance>
     </StyledTokenInput>
   );
